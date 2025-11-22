@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORW 02 Kel Gaddong</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 50%, #e1f5fe 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .float-bubble {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+        }
+
+        .bubble-1 {
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            background: #90caf9;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bubble-2 {
+            bottom: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: #64b5f6;
+            animation: float-delayed 25s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
+        }
+
+        @keyframes float-delayed {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, -50px); }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid #bbdefb;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1976d2;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            padding: 0.75rem 1.5rem;
+            border-radius: 1rem;
+            text-decoration: none;
+            color: #1565c0;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: #e3f2fd;
+            transform: scale(1.05);
+        }
+
+        .nav-links a.active {
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: #1565c0;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #1565c0;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 1rem 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            max-height: 500px;
+        }
+
+        .mobile-menu a {
+            padding: 0.75rem 1.5rem;
+            border-radius: 1rem;
+            text-decoration: none;
+            color: #1565c0;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .mobile-menu a:hover {
+            background: #e3f2fd;
+        }
+
+        .mobile-menu a.active {
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            color: white;
+            box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 1s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .home-content {
+            text-align: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .home-title {
+            position: relative;
+            font-size: 6rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #1976d2, #64b5f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .title-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            filter: blur(100px);
+            background: #64b5f6;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .home-subtitle {
+            font-size: 2.5rem;
+            color: #1565c0;
+            margin-bottom: 2rem;
+        }
+
+        .home-description {
+            font-size: 1.2rem;
+            color: #1976d2;
+            max-width: 700px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 2px solid #bbdefb;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            border-color: #64b5f6;
+            box-shadow: 0 12px 48px rgba(33, 150, 243, 0.3);
+        }
+
+        .leader-card {
+            text-align: center;
+        }
+
+        .leader-avatar {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #64b5f6, #1976d2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 8px 24px rgba(33, 150, 243, 0.4);
+            overflow: hidden;
+            border: 4px solid white;
+        }
+
+        .leader-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .leader-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1976d2;
+            margin-bottom: 0.25rem;
+        }
+
+        .leader-role {
+            font-size: 0.9rem;
+            color: #42a5f5;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1565c0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .about-card {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .about-content h3 {
+            font-size: 1.3rem;
+            color: #1565c0;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-content p {
+            color: #1976d2;
+            line-height: 1.6;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-desc {
+            color: #1976d2;
+            font-size: 0.9rem;
+        }
+
+        .feature-detail {
+            max-width: 900px;
+            margin: 0 auto 2rem;
+        }
+
+        .detail-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            border-radius: 1.5rem;
+            border: 2px solid #90caf9;
+            background: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #2196f3;
+            box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.2);
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            color: white;
+            border: none;
+            border-radius: 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(33, 150, 243, 0.4);
+        }
+
+        .cctv-frame {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #0d47a1, #1565c0);
+            border-radius: 1.5rem;
+            border: 4px solid #64b5f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #90caf9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cctv-pulse {
+            position: absolute;
+            inset: 0;
+            background: rgba(33, 150, 243, 0.2);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .cctv-text {
+            margin-top: 1rem;
+            text-align: center;
+            color: #1976d2;
+        }
+
+        .doc-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .doc-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 1rem;
+            border: 1px solid #bbdefb;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .doc-item:hover {
+            background: #e3f2fd;
+            border-color: #64b5f6;
+        }
+
+        .doc-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #1565c0;
+            font-weight: 500;
+        }
+
+        .doc-icon {
+            font-size: 1.5rem;
+        }
+
+        .download-icon {
+            font-size: 1.5rem;
+            color: #2196f3;
+            transition: transform 0.3s ease;
+        }
+
+        .doc-item:hover .download-icon {
+            transform: scale(1.25);
+        }
+
+        .event-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .event-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.25rem;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 1rem;
+            border: 1px solid #bbdefb;
+            transition: all 0.3s ease;
+        }
+
+        .event-item:hover {
+            background: #e3f2fd;
+            border-color: #64b5f6;
+        }
+
+        .event-date {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .event-day {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .event-month {
+            font-size: 0.75rem;
+        }
+
+        .event-info h4 {
+            color: #1565c0;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .event-time {
+            color: #1976d2;
+            font-size: 0.9rem;
+        }
+
+        .payment-card {
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-amount {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .payment-due {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .btn-pay {
+            width: 100%;
+            background: linear-gradient(135deg, #4caf50, #388e3c);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            color: #1565c0;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            border-radius: 1.5rem;
+            border: 2px solid #90caf9;
+            background: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #2196f3;
+            box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.2);
+        }
+
+        .form-textarea {
+            resize: none;
+            min-height: 150px;
+        }
+
+        .btn-submit {
+            width: 100%;
+        }
+
+        footer {
+            margin-top: 5rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            border-top: 2px solid #bbdefb;
+            text-align: center;
+        }
+
+        .footer-title {
+            color: #1565c0;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-text {
+            color: #1976d2;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .home-title {
+                font-size: 3rem;
+            }
+
+            .home-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .card-grid,
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="float-bubble bubble-1"></div>
+        <div class="float-bubble bubble-2"></div>
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-brand">🏠 ORW 02</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active" onclick="showPage(event, 'home')">🏠 Home</a></li>
+                <li><a href="#leadership" class="nav-link" onclick="showPage(event, 'leadership')">👥 Leadership</a></li>
+                <li><a href="#about" class="nav-link" onclick="showPage(event, 'about')">ℹ️ About</a></li>
+                <li><a href="#features" class="nav-link" onclick="showPage(event, 'features')">📊 Features</a></li>
+                <li><a href="#complaint" class="nav-link" onclick="showPage(event, 'complaint')">💬 Complaint</a></li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home" class="mobile-link active" onclick="showPageMobile(event, 'home')">🏠 Home</a>
+            <a href="#leadership" class="mobile-link" onclick="showPageMobile(event, 'leadership')">👥 Leadership</a>
+            <a href="#about" class="mobile-link" onclick="showPageMobile(event, 'about')">ℹ️ About</a>
+            <a href="#features" class="mobile-link" onclick="showPageMobile(event, 'features')">📊 Features</a>
+            <a href="#complaint" class="mobile-link" onclick="showPageMobile(event, 'complaint')">💬 Complaint</a>
+        </div>
+    </nav>
+
+    <main>
+        <div id="home" class="page active">
+            <div class="home-content">
+                <div style="position: relative;">
+                    <h1 class="home-title">ORW 02</h1>
+                    <div class="title-glow"></div>
+                </div>
+                <h2 class="home-subtitle">Kel Gaddong</h2>
+                <p class="home-description">
+                    Selamat datang di pusat informasi lingkungan kami. Akses layanan, tetap terinformasi, dan terhubung dengan komunitas Anda.
+                </p>
+            </div>
+        </div>
+
+        <div id="leadership" class="page">
+            <h2 class="page-title">Struktur Kepemimpinan</h2>
+            <div class="card-grid">
+                <div class="card leader-card">
+                    <div class="leader-avatar">
+                        <img src="https://i.pravatar.cc/300?img=12" alt="Pak Ahmad Setiawan">
+                    </div>
+                    <h3 class="leader-title">RW 002</h3>
+                    <p class="leader-name">Pak Ahmad Setiawan</p>
+                    <p class="leader-role">Ketua RW</p>
+                </div>
+                <div class="card leader-card">
+                    <div class="leader-avatar">
+                        <img src="https://i.pravatar.cc/300?img=47" alt="Bu Siti Rahayu">
+                    </div>
+                    <h3 class="leader-title">RT 001</h3>
+                    <p class="leader-name">Bu Siti Rahayu</p>
+                    <p class="leader-role">Ketua RT</p>
+                </div>
+                <div class="card leader-card">
+                    <div class="leader-avatar">
+                        <img src="https://i.pravatar.cc/300?img=33" alt="Pak Budi Santoso">
+                    </div>
+                    <h3 class="leader-title">RT 002</h3>
+                    <p class="leader-name">Pak Budi Santoso</p>
+                    <p class="leader-role">Ketua RT</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="about" class="page">
+            <h2 class="page-title">Tentang Gang Kami</h2>
+            <div class="card about-card">
+                <div class="about-item">
+                    <div class="about-icon">ℹ️</div>
+                    <div class="about-content">
+                        <h3>Komunitas Kami</h3>
+                        <p>ORW 02 Kelurahan Gaddong adalah komunitas perumahan yang dinamis dan berkomitmen untuk keamanan, harmoni, dan saling mendukung. Kami melayani sekitar 150 keluarga di dua wilayah RT.</p>
+                    </div>
+                </div>
+                <div class="about-item">
+                    <div class="about-icon">👥</div>
+                    <div class="about-content">
+                        <h3>Visi Kami</h3>
+                        <p>Menciptakan lingkungan yang aman, bersih, dan sejahtera melalui partisipasi aktif masyarakat dan layanan digital modern.</p>
+                    </div>
+                </div>
+                <div class="about-item">
+                    <div class="about-icon">🏠</div>
+                    <div class="about-content">
+                        <h3>Lokasi</h3>
+                        <p>Berlokasi di Kelurahan Gaddong, gang kami mudah diakses dan terhubung dengan baik ke fasilitas dan layanan lokal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="features" class="page">
+            <h2 class="page-title">Layanan Kami</h2>
+            
+            <div class="feature-grid">
+                <div class="card feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">Cek Data Warga</h3>
+                    <p class="feature-desc">Verifikasi status pendaftaran Anda</p>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon">📹</div>
+                    <h3 class="feature-title">CCTV Viewer</h3>
+                    <p class="feature-desc">Monitor keamanan lingkungan</p>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon">📥</div>
+                    <h3 class="feature-title">Download Dokumen</h3>
+                    <p class="feature-desc">Akses formulir penting</p>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3 class="feature-title">Info Kegiatan</h3>
+                    <p class="feature-desc">Update aktivitas terkini</p>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">Bayar Iuran Sampah</h3>
+                    <p class="feature-desc">Pembayaran iuran bulanan</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <div class="card feature-detail">
+                    <h3 class="detail-header">🔍 Cek Data Warga</h3>
+                    <input type="text" class="search-input" placeholder="Masukkan nama atau nomor ID Anda...">
+                    <button class="btn">Cari</button>
+                </div>
+
+                <div class="card feature-detail">
+                    <h3 class="detail-header">📹 CCTV Viewer</h3>
+                    <div class="cctv-frame">
+                        <div class="cctv-pulse"></div>
+                        📹
+                    </div>
+                    <p class="cctv-text">Monitoring langsung tersedia 24/7</p>
+                </div>
+
+                <div class="card feature-detail">
+                    <h3 class="detail-header">📥 Download Dokumen</h3>
+                    <div class="doc-list">
+                        <div class="doc-item">
+                            <div class="doc-info">
+                                <span class="doc-icon">📄</span>
+                                <span>Template Surat Kematian</span>
+                            </div>
+                            <span class="download-icon">⬇️</span>
+                        </div>
+                        <div class="doc-item">
+                            <div class="doc-info">
+                                <span class="doc-icon">📄</span>
+                                <span>Surat Izin RT</span>
+                            </div>
+                            <span class="download-icon">⬇️</span>
+                        </div>
+                        <div class="doc-item">
+                            <div class="doc-info">
+                                <span class="doc-icon">📄</span>
+                                <span>Surat Izin RW</span>
+                            </div>
+                            <span class="download-icon">⬇️</span>
+                        </div>
+                        <div class="doc-item">
+                            <div class="doc-info">
+                                <span class="doc-icon">📄</span>
+                                <span>Surat Keterangan Domisili</span>
+                            </div>
+                            <span class="download-icon">⬇️</span>
+                        </div>
+                        <div class="doc-item">
+                            <div class="doc-info">
+                                <span class="doc-icon">📄</span>
+                                <span>Surat Pindah</span>
+                            </div>
+                            <span class="download-icon">⬇️</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card feature-detail">
+                    <h3 class="detail-header">📅 Kegiatan Mendatang</h3>
+                    <div class="event-list">
+                        <div class="event-item">
+                            <div class="event-date">
+                                <div class="event-day">25</div>
+                                <div class="event-month">Nov</div>
+                            </div>
+                            <div class="event-info">
+                                <h4>Gotong Royong</h4>
+                                <p class="event-time">07:00 Pagi</p>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">
+                                <div class="event-day">30</div>
+                                <div class="event-month">Nov</div>
+                            </div>
+                            <div class="event-info">
+                                <h4>Rapat Bulanan</h4>
+                                <p class="event-time">19:00 Malam</p>
+                            </div>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">
+                                <div class="event-day">05</div>
+                                <div class="event-month">Des</div>
+                            </div>
+                            <div class="event-info">
+                                <h4>Pertemuan Warga</h4>
+                                <p class="event-time">16:00 Sore</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card feature-detail">
+                    <h3 class="detail-header">💰 Pembayaran Iuran Sampah</h3>
+                    <div class="payment-card">
+                        <p class="payment-label">Iuran Bulanan</p>
+                        <p class="payment-amount">Rp 25.000</p>
+                        <p class="payment-due">Jatuh tempo: Akhir bulan</p>
+                    </div>
+                    <button class="btn btn-pay">Bayar Sekarang</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="complaint" class="page">
+            <h2 class="page-title">Formulir Keluhan</h2>
+            <div class="card" style="max-width: 700px; margin: 0 auto;">
+                <div class="form-group">
+                    <label class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-input" placeholder="Masukkan nama lengkap Anda">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Alamat</label>
+                    <input type="text" class="form-input" placeholder="Alamat Anda (RT/RW)">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Detail Keluhan</label>
+                    <textarea class="form-textarea" placeholder="Jelaskan keluhan atau masalah Anda..."></textarea>
+                </div>
+                <button class="btn btn-submit">Kirim Keluhan</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="footer-title">ORW 02 Kelurahan Gaddong</p>
+        <p class="footer-text">© 2025 Adil Nugraha. All rights reserved</p>
+    </footer>
+
+    <script>
+        function showPage(event, pageId) {
+            event.preventDefault();
+            
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            mobileMenu.classList.toggle('active');
+            menuBtn.classList.toggle('active');
+        }
+
+        function showPageMobile(event, pageId) {
+            event.preventDefault();
+            
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            mobileLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            mobileMenu.classList.remove('active');
+            menuBtn.classList.remove('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
