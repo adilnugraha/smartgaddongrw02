@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RW 02 Kel Gaddong</title>
+    <title>ORW 02 Kel Gaddong</title>
     <style>
         * {
             margin: 0;
@@ -714,7 +714,7 @@
 
     <nav>
         <div class="nav-container">
-            <div class="nav-brand">🏠 SMART GADDONG RW 02</div>
+            <div class="nav-brand">🏠 ORW 02</div>
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link active" onclick="showPage(event, 'home')">🏠 Home</a></li>
                 <li><a href="#leadership" class="nav-link" onclick="showPage(event, 'leadership')">👥 Leadership</a></li>
@@ -741,7 +741,7 @@
         <div id="home" class="page active">
             <div class="home-content">
                 <div style="position: relative;">
-                    <h1 class="home-title">RW 02 KEL GADDONG</h1>
+                    <h1 class="home-title">ORW 02</h1>
                     <div class="title-glow"></div>
                 </div>
                 <h2 class="home-subtitle">Kel Gaddong</h2>
@@ -758,8 +758,8 @@
                     <div class="leader-avatar">
                         <img src="https://i.pravatar.cc/300?img=12" alt="Pak Ahmad Setiawan">
                     </div>
-                    <h3 class="leader-title">RW 001</h3>
-                    <p class="leader-name">Adil Nugraha</p>
+                    <h3 class="leader-title">RW 002</h3>
+                    <p class="leader-name">Pak Ahmad Setiawan</p>
                     <p class="leader-role">Ketua RW</p>
                 </div>
                 <div class="card leader-card">
@@ -767,7 +767,7 @@
                         <img src="https://i.pravatar.cc/300?img=47" alt="Bu Siti Rahayu">
                     </div>
                     <h3 class="leader-title">RT 001</h3>
-                    <p class="leader-name">Edwar nauly</p>
+                    <p class="leader-name">Bu Siti Rahayu</p>
                     <p class="leader-role">Ketua RT</p>
                 </div>
                 <div class="card leader-card">
@@ -775,7 +775,7 @@
                         <img src="https://i.pravatar.cc/300?img=33" alt="Pak Budi Santoso">
                     </div>
                     <h3 class="leader-title">RT 002</h3>
-                    <p class="leader-name">Wahyudi</p>
+                    <p class="leader-name">Pak Budi Santoso</p>
                     <p class="leader-role">Ketua RT</p>
                 </div>
             </div>
@@ -808,31 +808,226 @@
             </div>
         </div>
 
+        <div id="dashboard" class="page">
+            <h2 class="page-title">Dashboard Statistik Warga</h2>
+            
+            <!-- Stat Cards -->
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number">150</div>
+                    <div class="stat-label">Total Keluarga</div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-icon">👤</div>
+                    <div class="stat-number">487</div>
+                    <div class="stat-label">Total Jiwa</div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="stat-icon">🏘️</div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Jumlah RT</div>
+                </div>
+                <div class="stat-card purple">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Tingkat Partisipasi</div>
+                </div>
+            </div>
+
+            <!-- Bar Chart - Warga per Usia -->
+            <div class="chart-container">
+                <h3 class="chart-title">📊 Distribusi Warga Berdasarkan Usia</h3>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar" style="height: 45%;">45</div>
+                        <div class="bar-label">0-17 th</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar" style="height: 85%;">120</div>
+                        <div class="bar-label">18-35 th</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar" style="height: 100%;">180</div>
+                        <div class="bar-label">36-50 th</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar" style="height: 70%;">95</div>
+                        <div class="bar-label">51-65 th</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar" style="height: 35%;">47</div>
+                        <div class="bar-label">65+ th</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pie Chart - Jenis Kelamin -->
+            <div class="chart-container">
+                <h3 class="chart-title">🎯 Distribusi Berdasarkan Jenis Kelamin</h3>
+                <div class="pie-chart">
+                    <div class="pie-visual"></div>
+                    <div class="pie-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #2196f3;"></div>
+                            <div class="legend-text">Laki-laki</div>
+                            <div class="legend-value">243 (50%)</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #4caf50;"></div>
+                            <div class="legend-text">Perempuan</div>
+                            <div class="legend-value">219 (45%)</div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #ff9800;"></div>
+                            <div class="legend-text">Anak-anak</div>
+                            <div class="legend-value">25 (5%)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Cards -->
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-header">
+                        <div class="info-icon">💼</div>
+                        <div class="info-title">Data Pekerjaan</div>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-item-label">PNS/TNI/POLRI</span>
+                            <span class="info-item-value">85</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">Wiraswasta</span>
+                            <span class="info-item-value">120</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">Karyawan Swasta</span>
+                            <span class="info-item-value">95</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">Ibu Rumah Tangga</span>
+                            <span class="info-item-value">78</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">Pelajar/Mahasiswa</span>
+                            <span class="info-item-value">62</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-header">
+                        <div class="info-icon">🎓</div>
+                        <div class="info-title">Tingkat Pendidikan</div>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-item-label">SD/Sederajat</span>
+                            <span class="info-item-value">45</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">SMP/Sederajat</span>
+                            <span class="info-item-value">68</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">SMA/Sederajat</span>
+                            <span class="info-item-value">142</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">Diploma</span>
+                            <span class="info-item-value">78</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">Sarjana/Pascasarjana</span>
+                            <span class="info-item-value">154</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-header">
+                        <div class="info-icon">📈</div>
+                        <div class="info-title">Partisipasi Warga</div>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-item-label">Iuran Bulanan</span>
+                            <span class="info-item-value">98%</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">Gotong Royong</span>
+                            <span class="info-item-value">85%</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">Rapat Bulanan</span>
+                            <span class="info-item-value">72%</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">Acara Warga</span>
+                            <span class="info-item-value">90%</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">Keamanan Lingkungan</span>
+                            <span class="info-item-value">95%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-header">
+                        <div class="info-icon">🏠</div>
+                        <div class="info-title">Data RT</div>
+                    </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-item-label">RT 001 - Keluarga</span>
+                            <span class="info-item-value">78 KK</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">RT 001 - Jiwa</span>
+                            <span class="info-item-value">245</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">RT 002 - Keluarga</span>
+                            <span class="info-item-value">72 KK</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-item-label">RT 002 - Jiwa</span>
+                            <span class="info-item-value">242</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="features" class="page">
             <h2 class="page-title">Layanan Kami</h2>
             
             <div class="feature-grid">
-                <div class="card feature-card">
+                <div class="card feature-card" onclick="scrollToFeature('feature-resident')">
                     <div class="feature-icon">🔍</div>
                     <h3 class="feature-title">Cek Data Warga</h3>
                     <p class="feature-desc">Verifikasi status pendaftaran Anda</p>
                 </div>
-                <div class="card feature-card">
+                <div class="card feature-card" onclick="scrollToFeature('feature-cctv')">
                     <div class="feature-icon">📹</div>
                     <h3 class="feature-title">CCTV Viewer</h3>
                     <p class="feature-desc">Monitor keamanan lingkungan</p>
                 </div>
-                <div class="card feature-card">
+                <div class="card feature-card" onclick="scrollToFeature('feature-documents')">
                     <div class="feature-icon">📥</div>
                     <h3 class="feature-title">Download Dokumen</h3>
                     <p class="feature-desc">Akses formulir penting</p>
                 </div>
-                <div class="card feature-card">
+                <div class="card feature-card" onclick="scrollToFeature('feature-events')">
                     <div class="feature-icon">📅</div>
                     <h3 class="feature-title">Info Kegiatan</h3>
                     <p class="feature-desc">Update aktivitas terkini</p>
                 </div>
-                <div class="card feature-card">
+                <div class="card feature-card" onclick="scrollToFeature('feature-payment')">
                     <div class="feature-icon">💰</div>
                     <h3 class="feature-title">Bayar Iuran Sampah</h3>
                     <p class="feature-desc">Pembayaran iuran bulanan</p>
@@ -842,8 +1037,59 @@
             <div style="margin-top: 3rem;">
                 <div class="card feature-detail">
                     <h3 class="detail-header">🔍 Cek Data Warga</h3>
-                    <input type="text" class="search-input" placeholder="Masukkan nama atau nomor ID Anda...">
-                    <button class="btn">Cari</button>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Masukkan ID atau Nama Anda...">
+                    <button class="btn" onclick="searchResident()">Cari</button>
+                    
+                    <div id="searchResult" style="display: none; margin-top: 2rem;">
+                        <div style="background: rgba(255, 255, 255, 0.8); border-radius: 1.5rem; padding: 2rem; border: 2px solid #4caf50;">
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4caf50, #388e3c); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; font-weight: bold;">
+                                    ✓
+                                </div>
+                                <div>
+                                    <h4 style="color: #2e7d32; font-size: 1.5rem; font-weight: bold; margin-bottom: 0.25rem;">Data Ditemukan!</h4>
+                                    <p style="color: #4caf50; font-weight: 600;">Status: TERVERIFIKASI</p>
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; gap: 1rem;">
+                                <div style="display: flex; justify-content: space-between; padding: 1rem; background: rgba(76, 175, 80, 0.1); border-radius: 1rem;">
+                                    <span style="color: #1565c0; font-weight: 600;">ID Warga:</span>
+                                    <span style="color: #1976d2; font-weight: bold;" id="resultId"></span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 1rem; background: rgba(76, 175, 80, 0.1); border-radius: 1rem;">
+                                    <span style="color: #1565c0; font-weight: 600;">Nama Lengkap:</span>
+                                    <span style="color: #1976d2; font-weight: bold;" id="resultName"></span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 1rem; background: rgba(76, 175, 80, 0.1); border-radius: 1rem;">
+                                    <span style="color: #1565c0; font-weight: 600;">Umur:</span>
+                                    <span style="color: #1976d2; font-weight: bold;" id="resultAge"></span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 1rem; background: rgba(76, 175, 80, 0.1); border-radius: 1rem;">
+                                    <span style="color: #1565c0; font-weight: 600;">Alamat:</span>
+                                    <span style="color: #1976d2; font-weight: bold;" id="resultAddress"></span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 1rem; background: rgba(76, 175, 80, 0.1); border-radius: 1rem;">
+                                    <span style="color: #1565c0; font-weight: 600;">No. Telepon:</span>
+                                    <span style="color: #1976d2; font-weight: bold;" id="resultPhone"></span>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 1.5rem; padding: 1rem; background: linear-gradient(135deg, #4caf50, #388e3c); border-radius: 1rem; text-align: center;">
+                                <p style="color: white; font-weight: bold; font-size: 1.1rem;">✓ Terdaftar sebagai Warga ORW 02</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="notFoundResult" style="display: none; margin-top: 2rem;">
+                        <div style="background: rgba(255, 255, 255, 0.8); border-radius: 1.5rem; padding: 2rem; border: 2px solid #f44336; text-align: center;">
+                            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #f44336, #d32f2f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; font-weight: bold; margin: 0 auto 1rem;">
+                                ✗
+                            </div>
+                            <h4 style="color: #c62828; font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;">Data Tidak Ditemukan</h4>
+                            <p style="color: #e53935;">ID atau nama yang Anda masukkan tidak terdaftar dalam sistem.</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card feature-detail">
@@ -966,10 +1212,74 @@
 
     <footer>
         <p class="footer-title">ORW 02 Kelurahan Gaddong</p>
-        <p class="footer-text">© 2025 Adil Nugraha. All rights reserved</p>
+        <p class="footer-text">© 2025 Semua hak dilindungi</p>
     </footer>
 
     <script>
+        // Database warga (contoh data)
+        const residentsDatabase = [
+            { id: '001', name: 'Adil Nugraha', age: 24, address: 'RT 001/RW 002, No. 12', phone: '081234567890' },
+            { id: '002', name: 'Edwar Nauly', age: 40, address: 'RT 001/RW 002, No. 15', phone: '081234567891' },
+            { id: '003', name: 'Budi Santoso', age: 52, address: 'RT 002/RW 002, No. 8', phone: '081234567892' },
+            { id: '004', name: 'Dewi Lestari', age: 35, address: 'RT 002/RW 002, No. 20', phone: '081234567893' },
+            { id: '005', name: 'Eko Prasetyo', age: 41, address: 'RT 001/RW 002, No. 7', phone: '081234567894' },
+            { id: '006', name: 'Fitri Handayani', age: 29, address: 'RT 002/RW 002, No. 18', phone: '081234567895' },
+            { id: '007', name: 'Hendra Wijaya', age: 48, address: 'RT 001/RW 002, No. 25', phone: '081234567896' },
+            { id: '008', name: 'Indah Permata', age: 33, address: 'RT 002/RW 002, No. 11', phone: '081234567897' },
+        ];
+
+        function scrollToFeature(featureId) {
+            const element = document.getElementById(featureId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                
+                // Tambahkan efek highlight
+                element.style.transform = 'scale(1.02)';
+                element.style.boxShadow = '0 12px 48px rgba(33, 150, 243, 0.5)';
+                
+                setTimeout(() => {
+                    element.style.transform = 'scale(1)';
+                    element.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
+                }, 600);
+            }
+        }
+
+        function searchResident() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase().trim();
+            const searchResult = document.getElementById('searchResult');
+            const notFoundResult = document.getElementById('notFoundResult');
+            
+            // Reset tampilan
+            searchResult.style.display = 'none';
+            notFoundResult.style.display = 'none';
+            
+            if (searchInput === '') {
+                alert('Silakan masukkan ID atau Nama!');
+                return;
+            }
+            
+            // Cari data warga
+            const resident = residentsDatabase.find(r => 
+                r.id === searchInput || r.name.toLowerCase().includes(searchInput)
+            );
+            
+            if (resident) {
+                // Data ditemukan
+                document.getElementById('resultId').textContent = resident.id;
+                document.getElementById('resultName').textContent = resident.name;
+                document.getElementById('resultAge').textContent = resident.age + ' tahun';
+                document.getElementById('resultAddress').textContent = resident.address;
+                document.getElementById('resultPhone').textContent = resident.phone;
+                
+                searchResult.style.display = 'block';
+                searchResult.style.animation = 'fadeIn 0.5s ease';
+            } else {
+                // Data tidak ditemukan
+                notFoundResult.style.display = 'block';
+                notFoundResult.style.animation = 'fadeIn 0.5s ease';
+            }
+        }
+
         function showPage(event, pageId) {
             event.preventDefault();
             
@@ -1014,6 +1324,4 @@
         }
     </script>
 </body>
-
 </html>
-
